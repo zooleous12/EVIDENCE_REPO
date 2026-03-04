@@ -1,0 +1,47 @@
+QUICK PUSH INSTRUCTIONS
+=======================
+
+IF YOU HAVE GITHUB CLI INSTALLED:
+---------------------------------
+1. cd C:\Users\Charles Kendrick\Documents\EVIDENCE_REPO
+2. gh repo create firmware-rootkit-evidence --public --push
+
+IF USING HTTPS (PAT TOKEN):
+---------------------------
+1. Create repo on GitHub: https://github.com/new
+2. Name: firmware-rootkit-evidence
+3. Do NOT initialize with README
+4. Run these commands:
+
+   cd C:\Users\Charles Kendrick\Documents\EVIDENCE_REPO
+   git remote add origin https://github.com/YOURNAME/firmware-rootkit-evidence.git
+   git branch -M main
+   git push -u origin main
+
+5. When prompted for password, use GitHub Personal Access Token
+   (Create at: https://github.com/settings/tokens)
+
+IF TOKEN IS BLOCKED BY MALWARE:
+-------------------------------
+1. Open browser manually
+2. Go to https://github.com/new
+3. Create repo "firmware-rootkit-evidence"
+4. Upload files via web interface:
+   - INCIDENT_REPORT.json
+   - IOCs.txt
+   - README.md
+
+FILES READY TO PUSH:
+-------------------
+- FIRMWARE_MONITOR.ps1 (Continuous monitor)
+- INCIDENT_REPORT.json (Full incident data)
+- IOCs.txt (Threat intelligence IOCs)
+- MALWARE_CHECK.ps1 (Persistence scanner)
+- PUSH_TO_GITHUB.bat (Batch push helper)
+- README.md (Human-readable summary)
+- REPAIR_SYSTEM.ps1 (System repair)
+- SETUP_GITHUB.ps1 (PowerShell setup)
+
+REPO LOCATION:
+--------------
+C:\Users\Charles Kendrick\Documents\EVIDENCE_REPO
