@@ -1,0 +1,47 @@
+# IOC List - FIRMWARE_ROOTKIT_2026_03_04
+# Format: OpenIOC compatible
+
+## IP Addresses
+216.74.105.201 | C2_Server | HTTP_Exfiltration | High_Confidence
+
+## Processes (Hollowed/Injected)
+Dell.TechHub.Instrumentation.SubAgent.exe | PID_7720 | NO_PATH | Process_Hollowing
+svchost.exe | PID_14376 | NO_PATH | C2_Beacon
+
+## File Paths (Data Collection)
+C:\Users\*\Documents\firerlz.xml
+C:\Users\*\Documents\firerulez.evtx
+C:\Users\*\Documents\firerulz.txt
+C:\Users\*\Documents\ker-shimop.csv
+C:\Users\*\Documents\kerstreamop.csv
+C:\Users\*\Documents\ntfs.xml
+C:\Users\*\Documents\part.xml
+C:\Users\*\Documents\partition.csv
+C:\Users\*\Documents\stporrt.xml
+C:\Users\*\Documents\telm.xml
+C:\Users\*\Documents\time.xml
+C:\Users\*\Documents\trerremotecon.xml
+C:\Users\*\Documents\usbvid.xml
+C:\Users\*\Documents\volsnap.xml
+C:\Users\*\Documents\webauth.xml
+C:\Users\*\Documents\werpAYLOAD.xml
+C:\Users\*\Documents\wmi.txt
+C:\Users\*\Documents\6766.txt
+C:\Users\*\Documents\cameradevicemft.csv
+C:\Users\*\Documents\frameserver.csv
+
+## Network Signatures
+Outbound HTTP to 216.74.105.201:80
+Regular beaconing intervals (observed: 2-5 minutes)
+User-Agent: Windows NT 10.0 (if identifiable)
+
+## Behavioral Indicators
+- svchost.exe making outbound HTTP connections
+- Dell processes with NULL executable path
+- WMI queries for MSStorageDriver_ATAPISmartData
+- Event Log: Microsoft-Windows-WMI-Activity/Operational ID 5858 errors
+
+## System Fingerprint
+BIOS: Dell Inc. 1.27.1
+Motherboard: Dell Inc. 0FPD87
+OS: Windows 11 Build 26100
