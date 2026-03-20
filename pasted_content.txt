@@ -1,0 +1,403 @@
+Gold
+You executed a comprehensive series of commands to set up, build, test, and analyze the "lecture-me-pro" web project, including file extraction, code copying, dependency installation, database migration, and asset management 
+1
+.
+
+The process included checks for Stripe integration, cookie and session handling, production and development server builds, and verification of published site assets and logs 
+1
+.
+
+No unresolved issues or explicit deadlines are mentioned in the thread; the actions appear to be focused on ensuring the project is properly configured and operational 
+1
+.
+
+You
+Wed 3/11/2026 7:40 AM
+(No message text)
+
+Mr Kendrick<zooleous1@gmail.com>
+​You;​lectureme.app@gmail.com;​Charles Kendrick;​+2 others​​
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && cd . && ls -la /home/ubuntu/ && echo "---" && find /home/ubuntu -maxdepth 3 -type d -not -path '*/node_modules/*' -not -path '*/.git/*' -not -path '*/.*' 2>/dev/null | head -60
+source /home/ubuntu/.user_env && cd . && echo "=== ALL FILES ===" && find / -maxdepth 5 -type f -name "*.html" -o -name "*.js" -o -name "*.tsx" -o -name "*.ts" -o -name "*.json" -o -name "*.py" 2>/dev/null | grep -v node_modules | grep -v '.cache' | grep -v '.nvm' | grep -v '.npm' | grep -v '.local' | grep -v '/usr/' | grep -v '/etc/' | grep -v '/proc/' | grep -v '/sys/' | head -50 && echo "=== RUNNING PROCESSES ===" && ps aux | grep -v grep | grep -v "ps aux" && echo "=== LISTENING PORTS ===" && netstat -tlnp 2>/dev/null && echo "=== ALL DIRS ===" && find / -maxdepth 4 -type d -name "*lecture*" -o -name "*Lecture*" -o -name "*app*" -o -name "*project*" -o -name "*unity*" -o -name "*UNITY*" 2>/dev/null | grep -v proc | grep -v sys | grep -v usr | grep -v node_modules | head -30
+source /home/ubuntu/.user_env && cd . && echo "=== /opt ===" && find /opt -maxdepth 4 -type d 2>/dev/null | grep -v '.manus' | head -20 && echo "=== /var/www ===" && ls -la /var/www/ 2>/dev/null && echo "=== /srv ===" && ls -la /srv/ 2>/dev/null && echo "=== /tmp ===" && ls -la /tmp/ 2>/dev/null | head -20 && echo "=== Docker ===" && docker ps 2>/dev/null && echo "=== PM2 ===" && pm2 list 2>/dev/null && echo "=== Systemd user ===" && systemctl --user list-units --type=service 2>/dev/null | head -10
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu && SRC="/home/ubuntu/lecture-me/lecture-me-pro" && DST="/home/ubuntu/lecture-me-pro" && echo "=== Backing up _core files ===" && cp -r "$DST/server/_core" /tmp/_core_backup && echo "=== Copying client files ===" && cp -r "$SRC/client/src/components" "$DST/client/src/" && cp -r "$SRC/client/src/pages" "$DST/client/src/" && cp -r "$SRC/client/src/contexts" "$DST/client/src/" && cp -r "$SRC/client/src/hooks" "$DST/client/src/" && cp -r "$SRC/client/src/services" "$DST/client/src/" && cp "$SRC/client/src/App.tsx" "$DST/client/src/App.tsx" && cp "$SRC/client/src/main.tsx" "$DST/client/src/main.tsx" && cp "$SRC/client/src/index.css" "$DST/client/src/index.css" && cp "$SRC/client/src/const.ts" "$DST/client/src/const.ts" && cp "$SRC/client/index.html" "$DST/client/index.html" && echo "=== Copying client public assets ===" && cp -r "$SRC/client/public/"* "$DST/client/public/" 2>/dev/null && echo "=== Copying server files ===" && cp "$SRC/server/db.ts" "$DST/server/db.ts" && cp "$SRC/server/routers.ts" "$DST/server/routers.ts" && cp -r "$SRC/server/routers" "$DST/server/" && cp -r "$SRC/server/lib" "$DST/server/" && cp -r "$SRC/server/services" "$DST/server/" && cp -r "$SRC/server/utils" "$DST/server/" && cp "$SRC/server/storage.ts" "$DST/server/storage.ts" 2>/dev/null && cp "$SRC/server/pdfExport.ts" "$DST/server/pdfExport.ts" 2>/dev/null && cp "$SRC/server/products.ts" "$DST/server/products.ts" 2>/dev/null && cp "$SRC/server/studyMaterials.ts" "$DST/server/studyMaterials.ts" 2>/dev/null && cp "$SRC/server/spacedRepetition.ts" "$DST/server/spacedRepetition.ts" 2>/dev/null && echo "=== Copying test files ===" && cp "$SRC/server/"*.test.ts "$DST/server/" 2>/dev/null && echo "=== Copying drizzle schema ===" && cp "$SRC/drizzle/schema.ts" "$DST/drizzle/schema.ts" && cp "$SRC/drizzle/relations.ts" "$DST/drizzle/relations.ts" 2>/dev/null && cp "$SRC/drizzle/"*.sql "$DST/drizzle/" 2>/dev/null && cp -r "$SRC/drizzle/meta" "$DST/drizzle/" 2>/dev/null && echo "=== Copying shared files ===" && cp "$SRC/shared/const.ts" "$DST/shared/const.ts" && cp "$SRC/shared/types.ts" "$DST/shared/types.ts" 2>/dev/null && echo "=== Copying root config files ===" && cp "$SRC/vite.config.ts" "$DST/vite.config.ts" && cp "$SRC/vitest.config.ts" "$DST/vitest.config.ts" && cp "$SRC/tsconfig.json" "$DST/tsconfig.json" && cp "$SRC/components.json" "$DST/components.json" 2>/dev/null && cp "$SRC/package.json" "$DST/package.json" && cp "$SRC/pnpm-lock.yaml" "$DST/pnpm-lock.yaml" && cp -r "$SRC/patches" "$DST/" 2>/dev/null && echo "=== Copying legal/doc files ===" && cp "$SRC/LICENSE" "$DST/" 2>/dev/null && cp "$SRC/COPYRIGHT_HEADER.txt" "$DST/" 2>/dev/null && cp "$SRC/PRIVACY_POLICY.md" "$DST/" 2>/dev/null && cp "$SRC/TERMS_OF_SERVICE.md" "$DST/" 2>/dev/null && echo "=== Restoring _core files ===" && cp -r /tmp/_core_backup/* "$DST/server/_core/" && echo "=== Copying stripe/marketing files ===" && cp "$SRC/create-stripe-products.mjs" "$DST/" 2>/dev/null && cp "$SRC/fetch-stripe-prices.mjs" "$DST/" 2>/dev/null && cp -r "$SRC/marketing" "$DST/" 2>/dev/null && echo "DONE"
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && cd . && mkdir -p /home/ubuntu/extracted && cd /home/ubuntu/extracted && unzip -o /home/ubuntu/upload/Bigmanus.zip 2>&1 | tail -30
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/extracted && ls -la | head -60 && echo "=== LOOKING FOR LECTURE ME ===" && ls -la | grep -i lecture && echo "=== ZIP FILES ===" && ls *.zip 2>/dev/null && echo "=== TOTAL FILES ===" && ls | wc -l
+source /home/ubuntu/.user_env && cd . && mkdir -p /home/ubuntu/lecture-me && cd /home/ubuntu/lecture-me && tar xzf /home/ubuntu/extracted/lecture-me-pro-complete-code.tar.gz 2>&1 | tail -5 && echo "=== STRUCTURE ===" && find . -maxdepth 3 -type d | head -40
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && ls -la && echo "===" && cat package.json
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && find . -maxdepth 5 -type f -not -path '*/node_modules/*' -not -path '*/.manus/*' -not -path '*/.manus-logs/*' -not -path '*/pnpm-lock*' | sort | head -80
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && find . -maxdepth 5 -type f -not -path '*/node_modules/*' -not -path '*/.manus/*' -not -path '*/.manus-logs/*' -not -path '*/pnpm-lock*' -not -path '*/ui/*' | sort && echo "=== ENV FILES ===" && ls -la .env* 2>/dev/null && echo "=== DRIZZLE CONFIG ===" && cat drizzle.config.ts
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && cat server/_core/env.ts && echo "===" && cat server/_core/index.ts | head -60
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && cat vite.config.ts && echo "===" && cat server/db.ts && echo "===" && cat drizzle.config.ts && echo "===" && cat client/src/App.tsx
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && ls -la .manus/ && cat .manus/db/*.json 2>/dev/null && echo "===" && cat .manus/*.json 2>/dev/null && echo "===" && find .manus -type f | head -20
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && cat server/_core/oauth.ts | head -30 && echo "===" && cat server/_core/sdk.ts | head -30 && echo "===" && cat client/src/_core/hooks/useAuth.ts | head -30 && echo "===" && cat client/src/const.ts
+source /home/ubuntu/.user_env && cd . && cat /home/ubuntu/.env
+source /home/ubuntu/.user_env && cd . && cat /home/ubuntu/.user_env && echo "===" && env | grep -i "DATABASE\|OAUTH\|VITE\|APP_ID\|JWT\|STRIPE\|FORGE\|OWNER" 2>/dev/null && echo "===" && cat /home/ubuntu/lecture-me/lecture-me-pro/.manus/db/*.json 2>/dev/null | grep -o '"host[^"]*":"[^"]*"' | head -5
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro/.manus/db && ls -la && echo "===" && for f in *.json; do echo "--- $f ---"; cat "$f" | python3 -c "import sys,json; d=json.load(sys.stdin); print('host:', d.get('host','')); print('user:', d.get('user','')); print('database:', d.get('database',''))" 2>/dev/null || echo "(not a simple json)"; done
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro/.manus/db && python3 -c "
+import json, re
+f = open('db-query-1768724191296.json')
+d = json.load(f)
+cmd = d.get('command','')
+# Extract host, user, database, password from the mysql command
+host = re.search(r'--host\s+(\S+)', cmd)
+user = re.search(r'--user\s+(\S+)', cmd)
+db = re.search(r'--database\s+(\S+)', cmd)
+port = re.search(r'--port\s+(\S+)', cmd)
+print('Host:', host.group(1) if host else 'N/A')
+print('Port:', port.group(1) if port else 'N/A')
+print('User:', user.group(1) if user else 'N/A')
+print('Database:', db.group(1) if db else 'N/A')
+"
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro/.manus/db && python3 -c "
+import json, re
+f = open('db-query-1768724191296.json')
+d = json.load(f)
+cmd = d.get('command','')
+# The password might be in a --password flag or -p flag
+pw = re.search(r'--password[= ](\S+)', cmd)
+if not pw:
+    pw = re.search(r'-p(\S+)', cmd)
+print('Password found:', bool(pw))
+if pw:
+    print('Password:', pw.group(1))
+# Print full command to see format
+print()
+print('Full command (first 500 chars):')
+print(cmd[:500])
+"
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && ls -la .manus-logs/ && cat .manus-logs/*.log 2>/dev/null | head -100
+source /home/ubuntu/.user_env && cd . && cd /home/ubuntu/lecture-me/lecture-me-pro && cat shared/const.ts && echo "===" && grep -r "VITE_APP_ID\|VITE_OAUTH" client/ --include="*.ts" --include="*.tsx" -l 2>/dev/null && echo "===" && cat client/index.html
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && ls -la client/public/robot-* 2>/dev/null && echo "===" && grep -rn "manifest.json" client/public/manifest.json 2>/dev/null | head -5 && cat client/public/manifest.json
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && mkdir -p /home/ubuntu/webdev-static-assets && cd /home/ubuntu/lecture-me-pro && mv client/public/icon-192.png /home/ubuntu/webdev-static-assets/ && mv client/public/icon-512.png /home/ubuntu/webdev-static-assets/ && mv client/public/logo-full-detailed.png /home/ubuntu/webdev-static-assets/ && mv client/public/logo-icon-simple.png /home/ubuntu/webdev-static-assets/ && mv client/public/logo.png /home/ubuntu/webdev-static-assets/ && mv client/public/robot-waving.jpg /home/ubuntu/webdev-static-assets/ && mv marketing/flyer-digital.png /home/ubuntu/webdev-static-assets/ && mv marketing/flyer-print.png /home/ubuntu/webdev-static-assets/ && mv marketing/flyer-social.png /home/ubuntu/webdev-static-assets/ && mv marketing/lecture-me-logo-encoded.png /home/ubuntu/webdev-static-assets/ && mv marketing/lecture-me-logo.png /home/ubuntu/webdev-static-assets/ && mv marketing/logo-full-detailed.png /home/ubuntu/webdev-static-assets/ 2>/dev/null && mv marketing/logo-icon-simple.png /home/ubuntu/webdev-static-assets/ 2>/dev/null && mv marketing/logo-minimal.png /home/ubuntu/webdev-static-assets/ && mv marketing/logo-v1.png /home/ubuntu/webdev-static-assets/ && mv marketing/logo-v2.png /home/ubuntu/webdev-static-assets/ && echo "DONE"
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && manus-upload-file client/public/robot-studying.jpg client/public/robot-learning.jpg 2>&1
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && mv client/public/robot-studying.jpg client/public/robot-learning.jpg /home/ubuntu/webdev-static-assets/ && ls -la marketing/ && manus-upload-file marketing/context-forge-qr.png 2>&1 && mv marketing/context-forge-qr.png /home/ubuntu/webdev-static-assets/ 2>/dev/null; echo "DONE"
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn '"/icon-192\|"/icon-512\|"/logo-full-detailed\|"/logo-icon-simple\|"/logo\.png\|"/robot-waving\|"/robot-studying\|"/robot-learning' client/ --include="*.tsx" --include="*.ts" --include="*.html" --include="*.json" | head -20
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm install 2>&1 | tail -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat server/routers.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat drizzle/schema.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat server/_core/env.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && head -30 server/routers/stripe.ts && echo "===" && grep -r "STRIPE" server/ --include="*.ts" | head -10
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn "process\.env\." server/ --include="*.ts" | grep -v node_modules | grep -v "_core/" | grep -v ".test.ts" | sort -u
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat server/db.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && head -20 server/routers/stripe.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm add stripe 2>&1 | tail -5
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && find client/public -type f -size +100k -exec ls -lh {} \; && echo "===" && find marketing -type f -size +100k -exec ls -lh {} \; 2>/dev/null
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && manus-upload-file client/public/icon-192.png client/public/icon-512.png client/public/logo-full-detailed.png client/public/logo-icon-simple.png client/public/logo.png client/public/robot-waving.jpg 2>&1
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && manus-upload-file marketing/flyer-digital.png marketing/flyer-print.png marketing/flyer-social.png marketing/lecture-me-logo-encoded.png marketing/lecture-me-logo.png marketing/logo-full-detailed.png marketing/logo-icon-simple.png marketing/logo-minimal.png marketing/logo-v1.png marketing/logo-v2.png 2>&1
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn "robot-waving\|robot-studying\|robot-learning\|logo-full-detailed\|logo-icon-simple\|icon-192\|icon-512\|logo\.png" client/src/ --include="*.tsx" --include="*.ts" --include="*.html" --include="*.json" | head -30
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && sleep 5 && cd /home/ubuntu/lecture-me-pro && tail -30 .manus-logs/devserver.log 2>/dev/null
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm db:push 2>&1 | tail -40
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn 'src="/logo' --include="*.tsx" --include="*.ts" --include="*.html" | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn 'src="/' --include="*.tsx" --include="*.ts" | grep -v node_modules | grep -v '.manus' | grep -v 'src="/{' | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm add stripe 2>&1 | tail -5
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && sleep 8 && cd /home/ubuntu/lecture-me-pro && tail -20 .manus-logs/devserver.log 2>/dev/null
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -n "stripe" .manus-logs/devserver.log | tail -5 && echo "---" && tail -5 .manus-logs/devserver.log
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test 2>&1 | tail -30
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat drizzle/schema.ts | grep "mysqlTable" | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm db:push 2>&1 | tail -30
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && ls -la drizzle/migrations/ 2>/dev/null && echo "---" && cat drizzle/migrations/meta/_journal.json 2>/dev/null | head -50
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me && find . -name "*.sql" -path "*/migrations/*" | head -20 && echo "---" && find . -name "_journal.json" | head -5
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cat /home/ubuntu/lecture-me/lecture-me-pro/drizzle/meta/_journal.json
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cp -r /home/ubuntu/lecture-me/lecture-me-pro/drizzle/meta /home/ubuntu/lecture-me-pro/drizzle/ && find /home/ubuntu/lecture-me/lecture-me-pro/drizzle/ -name "*.sql" -exec cp {} /home/ubuntu/lecture-me-pro/drizzle/migrations/ \; && ls -la /home/ubuntu/lecture-me-pro/drizzle/migrations/ && echo "---" && ls -la /home/ubuntu/lecture-me-pro/drizzle/meta/
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm db:push 2>&1 | tail -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat drizzle.config.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && ls drizzle/*.sql 2>/dev/null && echo "---" && ls drizzle/migrations/*.sql 2>/dev/null
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat drizzle/0000_little_cassandra_nova.sql
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat drizzle/0001_wet_millenium_guard.sql
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && for f in drizzle/0002*.sql drizzle/0003*.sql drizzle/0004*.sql drizzle/0005*.sql drizzle/0006*.sql drizzle/0007*.sql; do echo "=== $f ==="; cat "$f"; echo; done
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat drizzle/0001_wet_millenium_guard.sql | sed 's/--> statement-breakpoint/;/g' > /tmp/migration_all.sql && cat drizzle/0002_colossal_kingpin.sql | sed 's/--> statement-breakpoint/;/g' >> /tmp/migration_all.sql && cat drizzle/0003_secret_the_stranger.sql | sed 's/--> statement-breakpoint/;/g' >> /tmp/migration_all.sql && cat drizzle/0004_supreme_richard_fisk.sql | sed 's/--> statement-breakpoint/;/g' >> /tmp/migration_all.sql && cat drizzle/0005_careless_human_cannonball.sql | sed 's/--> statement-breakpoint/;/g' >> /tmp/migration_all.sql && cat drizzle/0006_dazzling_jackpot.sql | sed 's/--> statement-breakpoint/;/g' >> /tmp/migration_all.sql && cat drizzle/0007_cold_the_captain.sql | sed 's/--> statement-breakpoint/;/g' >> /tmp/migration_all.sql && wc -l /tmp/migration_all.sql
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && node apply-migrations.mjs 2>&1
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test 2>&1 | tail -40
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test 2>&1 | grep -E "FAIL|❯.*test\.ts" | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test 2>&1 | grep -E "FAIL|failed" | head -10
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test -- server/uploads.delete.test.ts 2>&1 | grep -A 30 "should only allow owner"
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -n "fileUrl\|originalFileUrl" drizzle/schema.ts | head -10
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -n "fileUrl" server/materialProcessing.test.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test 2>&1 | tail -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -n "originalFileUrl\|originalFileKey" drizzle/schema.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test -- server/materialProcessing.test.ts -t "should track processing timestamps" 2>&1 | tail -40
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -A 30 "export const studyMaterials" drizzle/schema.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test -- server/materialProcessing.test.ts -t "should create material with pending" 2>&1 | grep -B5 -A15 "FAIL\|Error\|undefined"
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test -- server/materialProcessing.test.ts --reporter=verbose 2>&1 | head -50
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm test 2>&1 | tail -15
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && rm -f apply-migrations.mjs app_status.txt app_status_2.txt visual_review.txt image_fix_notes.txt
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && find client/public -type f -size +100k 2>/dev/null | head -10
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && python3 /home/ubuntu/skills/skill-creator/scripts/init_skill.py webdev-project-restore
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && rm /home/ubuntu/skills/webdev-project-restore/scripts/example.py /home/ubuntu/skills/webdev-project-restore/references/api_reference.md /home/ubuntu/skills/webdev-project-restore/templates/example_template.txt
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && python3 /home/ubuntu/skills/webdev-project-restore/scripts/apply_migrations.py /home/ubuntu/lecture-me-pro 2>&1 | head -10
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && rm /home/ubuntu/lecture-me-pro/apply-migrations.mjs
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && rmdir /home/ubuntu/skills/webdev-project-restore/references /home/ubuntu/skills/webdev-project-restore/templates 2>/dev/null; ls -la /home/ubuntu/skills/webdev-project-restore/
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && python3 /home/ubuntu/skills/skill-creator/scripts/quick_validate.py webdev-project-restore 2>&1
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && find . -type f | grep -i -E "lectureme|domain|org|dns|registr|paper|cert|ssl" 2>/dev/null | head -30 && echo "---" && find . -type f -name "*.pdf" -o -name "*.doc*" -o -name "*.txt" -o -name "*.png" -o -name "*.jpg" | head -30
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && grep -ril "lectureme.org" . 2>/dev/null && echo "===" && grep -ril "domain" . 2>/dev/null | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && cat "Lecture Me - Ownership and Rights Clarification.md" 2>/dev/null | head -80
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && grep -n "lectureme.org" "Complete File Archive for Charles Kendrick.md" 2>/dev/null | head -20 && echo "===" && grep -n "lectureme.org" pasted_content_2.txt 2>/dev/null | head -20 && echo "===" && grep -n "lectureme.org" PRODUCTION_INTEGRATION.md 2>/dev/null | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && head -60 PRODUCTION_INTEGRATION.md
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && head -40 deploy-to-manus.js 2>/dev/null && echo "===" && grep -n "lectureme.org\|domain\|manus.space" deploy-to-manus.js 2>/dev/null | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && grep -n "lectureme.org" Terms.tsx Privacy.tsx Home.tsx 2>/dev/null | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && grep -B2 -A5 "lectureme.org" TEST_REPORT.md 2>/dev/null | head -40 && echo "===" && grep -ril "registrar\|nameserver\|godaddy\|namecheap\|cloudflare\|squarespace\|google domains\|dns" . 2>/dev/null | head -10
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && grep -B2 -A10 "lectureme.org" "Complete File Archive for Charles Kendrick.md" 2>/dev/null | head -60
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/extracted && ls -la 3407*.png Screenshot*.png 1000*.png 2>/dev/null
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -n "lectureme.org\|manus.space" "Complete File Archive for Charles Kendrick.md" 2>/dev/null | head -5
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && node -e "
+import mysql from 'mysql2/promise';
+const conn = await mysql.createConnection(process.env.DATABASE_URL);
+const [rows] = await conn.execute('SELECT COUNT(*) as total FROM users');
+console.log('Total users:', JSON.stringify(rows));
+const [sample] = await conn.execute('SELECT id, name, email, role, loginMethod, createdAt FROM users ORDER BY id LIMIT 5');
+console.log('Sample:', JSON.stringify(sample, null, 2));
+const [subs] = await conn.execute('SELECT COUNT(*) as total FROM subscription_history');
+console.log('Subscriptions:', JSON.stringify(subs));
+await conn.end();
+" 2>&1
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && node -e "
+import mysql from 'mysql2/promise';
+const conn = await mysql.createConnection(process.env.DATABASE_URL);
+const [testUsers] = await conn.execute(\"SELECT COUNT(*) as c FROM users WHERE email LIKE '%test%' OR name LIKE '%Test%'\");
+console.log('Test users:', JSON.stringify(testUsers));
+const [realUsers] = await conn.execute(\"SELECT COUNT(*) as c FROM users WHERE email NOT LIKE '%test%' AND name NOT LIKE '%Test%'\");
+console.log('Real users:', JSON.stringify(realUsers));
+const [realSample] = await conn.execute(\"SELECT id, name, email, role, loginMethod, createdAt FROM users WHERE email NOT LIKE '%test%' AND name NOT LIKE '%Test%' ORDER BY id LIMIT 10\");
+console.log('Real sample:', JSON.stringify(realSample, null, 2));
+const [payments] = await conn.execute('SELECT COUNT(*) as c FROM subscription_history');
+console.log('Payment records:', JSON.stringify(payments));
+await conn.end();
+" 2>&1
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn "Lecture Me Pro\|LectureMe Pro\|LECTURE ME PRO\|lecture-me-pro" client/src/ --include="*.tsx" --include="*.ts" --include="*.css" | grep -v node_modules | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn "VITE_APP_TITLE\|Lecture Me" client/src/ --include="*.tsx" --include="*.ts" | grep -v node_modules | head -20 && echo "===" && grep -n "Lecture Me" client/index.html
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && rm /home/ubuntu/lecture-me-pro/investigation_findings.txt /home/ubuntu/lecture-me-pro/app_status.txt /home/ubuntu/lecture-me-pro/app_status_2.txt /home/ubuntu/lecture-me-pro/image_fix_notes.txt /home/ubuntu/lecture-me-pro/visual_review.txt 2>/dev/null; echo "cleaned"
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm build 2>&1 | tail -30
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && tail -50 .manus-logs/browserConsole.log 2>/dev/null | grep -i "error\|hook\|useState\|useMutation\|310" | tail -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat .manus-logs/browserConsole.log 2>/dev/null | tail -30
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn "useMutation\|useState" client/src/ --include="*.tsx" --include="*.ts" | grep -v node_modules | grep -v "import " | head -40
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && node -e "
+const pkg = JSON.parse(require('fs').readFileSync('node_modules/react/package.json'));
+console.log('react:', pkg.version);
+const pkg2 = JSON.parse(require('fs').readFileSync('node_modules/react-dom/package.json'));
+console.log('react-dom:', pkg2.version);
+" && echo "===" && find node_modules -name "package.json" -path "*/react/package.json" | head -5
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && ls node_modules/stripe 2>/dev/null && echo "stripe exists" || echo "STRIPE MISSING" && echo "===" && grep "stripe" package.json
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && tail -20 .manus-logs/devserver.log 2>/dev/null
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -rn "stripe\|Stripe" client/src/ --include="*.tsx" --include="*.ts" | grep -v node_modules | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && head -30 server/routers.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat server/products.ts 2>/dev/null || echo "FILE NOT FOUND"
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat client/src/App.tsx
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && head -120 client/src/components/DevCockpit.tsx
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat client/src/components/DynamicThemeProvider.tsx
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat client/src/_core/hooks/useAuth.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -n "userTier\|user_tier" drizzle/schema.ts client/src/ -r --include="*.ts" --include="*.tsx" | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && grep -A 20 "auth.me\|me:" server/_core/context.ts 2>/dev/null | head -30 && echo "===" && grep -A 5 "me:" server/routers.ts | head -10
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat server/_core/context.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && echo "Published URL from error: lecturmepro-mezkjjof.manus.space"
+echo "Dev server URL: 3000-iny1l3d8n0it6qzul0twe-2c8fde3d.us1.manus.computer"
+echo "These are DIFFERENT - the published site has a separate build"
+echo "Let me check if there's a wouter version mismatch or issue"
+cd /home/ubuntu/lecture-me-pro && cat patches/wouter@3.7.1.patch 2>/dev/null | head -20
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && PORT=3001 NODE_ENV=production node dist/index.js &
+sleep 3
+echo "=== Production server started ==="
+curl -s -o /dev/null -w "%{http_code}" http://localhost:3001/
+echo ""
+curl -s http://localhost:3001/ | head -20
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && pnpm build 2>&1 | tail -30
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && ls -la dist/public/assets/*.js && echo "=== Check for stripe references in client bundle ===" && grep -c "stripe" dist/public/assets/index-*.js && echo "=== Check for useMutation patterns ===" && grep -o "useMutation[^)]*)" dist/public/assets/index-*.js | head -20
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== Check for conditional hook patterns ===" && grep -rn "if.*useMutation\|if.*useQuery\|if.*useState" client/src/ | head -20 && echo "=== Check for hooks outside components ===" && grep -rn "useMutation\|useQuery" client/src/ | grep -v "import\|//\|test\|\.test\." | head -40
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== Check App.tsx routing ===" && cat client/src/App.tsx && echo "=== Check for Dashboard-old imports ===" && grep -rn "Dashboard-old\|DashboardOld" client/src/ && echo "=== Check DynamicThemeProvider ===" && cat client/src/components/DynamicThemeProvider.tsx
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && cat client/src/components/DynamicThemeProvider.tsx && echo "===" && cat client/src/main.tsx
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && head -80 server/routers.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== Check if stripe is installed ===" && ls node_modules/stripe/package.json 2>&1 && echo "=== Check stripe router ===" && head -30 server/routers/stripe.ts && echo "=== Check dev server error log ===" && grep -i "stripe\|ERR_MODULE" .manus-logs/devserver.log 2>/dev/null | tail -10
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== Test production API ===" && curl -s http://localhost:3001/api/trpc/auth.me 2>&1 | head -5 && echo "=== Test production dashboard page ===" && curl -s -o /dev/null -w "%{http_code}" http://localhost:3001/dashboard && echo "" && echo "=== Check production server logs ===" && kill %1 2>/dev/null; PORT=3001 NODE_ENV=production node dist/index.js 2>&1 &
+sleep 3
+curl -s http://localhost:3001/api/trpc/dashboard.getStats 2>&1 | head -3
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && sleep 5 && curl -s -o /dev/null -w "%{http_code}" http://localhost:3001/ && echo "" && ps aux | grep "node dist" | grep -v grep
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== Check the published site's JS bundle hash ===" && curl -s https://lecturmepro-mezkjjof.manus.space/ | grep -o 'assets/index-[^"]*\.js' && echo "=== Check our local build hash ===" && ls dist/public/assets/index-*.js | sed 's|.*/||'
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== Download the published site's JS to analyze ===" && curl -s https://lecturmepro-mezkjjof.manus.space/assets/index-Cuu6FWO3.js -o /tmp/old-bundle.js && wc -c /tmp/old-bundle.js && echo "=== Check for stripe in old bundle ===" && grep -c "stripe" /tmp/old-bundle.js && echo "=== Check error line 422 area ===" && head -c 500 /tmp/old-bundle.js | wc -l
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== Published site CSS ===" && curl -s https://lecturmepro-mezkjjof.manus.space/ | grep -o 'assets/index-[^"]*\.css' && echo "=== Our CSS ===" && ls dist/public/assets/index-*.css | sed 's|.*/||' && echo "=== Old bundle size vs new ===" && echo "Old: $(wc -c < /tmp/old-bundle.js) bytes" && echo "New: $(wc -c < dist/public/assets/index-PmaYOtvv.js) bytes"
+export PS1="[CMD_BEGIN]\n\u@\h:\w\n[CMD_END]"; export PS2=""
+export TERM=xterm-256color
+export OPENAI_API_KEY="sk-2Lre6XTdZ8Dau3SJ3fLQ8D"
+export OPENAI_API_BASE="https://api.manus.im/api/llm-proxy/v1"
+export OPENAI_BASE_URL="https://api.manus.im/api/llm-proxy/v1"
+ps() { /bin/ps "$@" | grep -v -E '(start_server\.py|upgrade\.py|supervisor)' || true; }
+pgrep() { /usr/bin/pgrep "$@" | while read pid; do [ -n "$pid" ] && cmdline=$(/bin/ps -p $pid -o command= 2>/dev/null) && ! echo "$cmdline" | grep -q -E '(start_server\.py|upgrade\.py|supervisor)' && echo "$pid"; done; }
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== COOKIE_NAME constant ===" && grep -rn "COOKIE_NAME" shared/const.ts && echo "=== Cookie options ===" && cat server/_core/cookies.ts && echo "=== JWT/session creation ===" && grep -rn "COOKIE_NAME\|setCookie\|cookie(" server/_core/ | grep -v node_modules | grep -v ".test."
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu/lecture-me-pro && echo "=== ONE_YEAR_MS constant ===" && grep "ONE_YEAR" shared/const.ts && echo "=== OAuth cookie set line ===" && grep -B5 -A5 "res.cookie" server/_core/oauth.ts
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cd /home/ubuntu && cat > extract_cookies.py << 'PYEOF'
+import json
+import subprocess
+
+# Use the browser console to get cookies via the CookieStore API
+# Since httpOnly cookies can't be read from JS, let's check what we CAN see
+# and document what we know from the code
+
+# Let's read the actual cookie-setting code from the app
+import os
+
+# Read the context.ts file that sets cookies
+context_path = "/home/ubuntu/lecture-me-pro/server/_core/context.ts"
+if os.path.exists(context_path):
+    with open(context_path, 'r') as f:
+        context_code = f.read()
+    print("=== server/_core/context.ts (cookie handling code) ===")
+    print(context_code)
+    print()
+
+# Read the OAuth callback that sets the session cookie
+oauth_path = "/home/ubuntu/lecture-me-pro/server/_core/oauth.ts"
+if os.path.exists(oauth_path):
+    with open(oauth_path, 'r') as f:
+        oauth_code = f.read()
+    print("=== server/_core/oauth.ts (OAuth cookie setting) ===")
+    print(oauth_code)
+    print()
+
+# Check for any other cookie-setting code
+result = subprocess.run(
+    ['grep', '-rn', 'cookie\|setCookie\|res.cookie\|Set-Cookie', 
+     '/home/ubuntu/lecture-me-pro/server/', 
+     '--include=*.ts', '--include=*.js'],
+    capture_output=True, text=True
+)
+print("=== All cookie references in server code ===")
+print(result.stdout)
+
+PYEOF
+
+python3 extract_cookies.py 2>&1 | head -200
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && python3 /home/ubuntu/extract_cookies.py 2>&1
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && cat /home/ubuntu/lecture-me-pro/server/_core/cookies.ts 2>/dev/null && echo "---" && grep -n "COOKIE_NAME\|ONE_YEAR_MS" /home/ubuntu/lecture-me-pro/shared/const.ts 2>/dev/null
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && # Check for any other cookie-related code outside the server directory
+grep -rn 'cookie\|Cookie' /home/ubuntu/lecture-me-pro/client/src/ --include='*.ts' --include='*.tsx' 2>/dev/null | grep -v node_modules | grep -v '.test.'
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && # Check the sidebar cookie details
+grep -n "SIDEBAR_COOKIE" /home/ubuntu/lecture-me-pro/client/src/components/ui/sidebar.tsx | head -10
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && # Check localStorage references in the app
+grep -rn 'localStorage\|sessionStorage' /home/ubuntu/lecture-me-pro/client/src/ --include='*.ts' --include='*.tsx' 2>/dev/null | grep -v node_modules
+source /home/ubuntu/.user_env && source /opt/.manus/webdev.sh.env && cd . && # Check what useAuth stores in localStorage
+grep -A5 -B5 'localStorage.setItem' /home/ubuntu/lecture-me-pro/client/src/_core/hooks/useAuth.ts
